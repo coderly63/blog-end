@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
   // 从请求头获取token数据
   let token = req.headers.authorization;
   // 验证token是否有效
-  token = token ? token.split("Token ")[1] : null;
+  // console.log('module.exports= ~ token', token)
   // 如果无效，发送响应 401 结束响应
   if (!token) {
     return res.status(401).end();

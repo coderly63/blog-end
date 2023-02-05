@@ -20,6 +20,10 @@ const commentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  nums: {
+    type: Number,
+    default: 0,
+  },
 })
 
 module.exports = commentSchema
