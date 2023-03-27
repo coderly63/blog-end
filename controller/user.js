@@ -64,6 +64,7 @@ exports.changeInfo = async (req, res, next) => {
     user.nickname = updateUser.nickname || user.nickname
     user.avator = req.file.path || ''
     const userJson = user.toJSON()
+    userJson.avator = 'http://49.233.45.84:3333/' + req.file.filename
     await user.save()
     res.status(200).json({
       user: userJson,
