@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const baseModle = require("./base-model");
-const md5 = require("../util/md5");
+const mongoose = require('mongoose')
+const baseModle = require('./base-model')
+const md5 = require('../util/md5')
 
 const userSchema = new mongoose.Schema({
   ...baseModle,
@@ -22,10 +22,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
-  image: {
+  avator: {
     type: String,
     default: null,
   },
-});
+})
 
-module.exports = userSchema;
+module.exports = userSchema

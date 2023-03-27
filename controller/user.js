@@ -55,11 +55,18 @@ exports.register = async (req, res, next) => {
 }
 
 // Get Current User 获取当前登录用户
-exports.getCurrentUser = async (req, res, next) => {
+exports.changeInfo = async (req, res, next) => {
   try {
     // 处理请求
+    console.log('req', req.file, req.body)
+    const user = req.user
+    const updateUser = req.body
+    user.nickname = updateUser.nickname || user.nickname
+    user.avator = req.file.path || ''
+    const userJson = user.toJSON()
+    await user.save()
     res.status(200).json({
-      user: req.user,
+      user: userJson,
     })
   } catch (err) {
     next(err)
