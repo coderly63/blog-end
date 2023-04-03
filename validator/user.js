@@ -35,7 +35,7 @@ exports.login = [
   validate([body('password').notEmpty().withMessage('密码不能为空')]),
   validate([
     body('phone').custom(async (phone, { req }) => {
-      const user = await User.findOne({ phone }).select(['phone', 'password', 'nickname', 'id', 'email', 'image'])
+      const user = await User.findOne({ phone }).select(['phone', 'password', 'nickname', 'id', 'email', 'avator'])
       // 查询数据库查看数据是否存在
       if (!user) {
         return Promise.reject('用户不存在')

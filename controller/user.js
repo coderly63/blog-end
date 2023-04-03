@@ -8,6 +8,7 @@ exports.login = async (req, res, next) => {
     // 处理请求
     // 得到用户信息[mongosse数据对象 转换成 json数据对象]
     const user = req.user.toJSON()
+    console.log('exports.login= ~ user:', user)
     // 生成token
     const token = await jwt.sign(
       {
@@ -62,9 +63,9 @@ exports.changeInfo = async (req, res, next) => {
     const user = req.user
     const updateUser = req.body
     user.nickname = updateUser.nickname || user.nickname
-    user.avator = req.file.path || ''
+    // user.avator = 'http://49.233.45.84:3333/' + req.file.filename
+    user.avator = 'http://localhost:3333/' + req.file.filename
     const userJson = user.toJSON()
-    userJson.avator = 'http://49.233.45.84:3333/' + req.file.filename
     await user.save()
     res.status(200).json({
       user: userJson,

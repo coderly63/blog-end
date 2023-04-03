@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
   },
   avator: {
     type: String,
-    default: null,
+    default: 'http://49.233.45.84:3333/avator.png',
   },
 })
 
