@@ -64,11 +64,14 @@ exports.changeInfo = async (req, res, next) => {
     const updateUser = req.body
     user.nickname = updateUser.nickname || user.nickname
     // user.avator = 'http://49.233.45.84:3333/' + req.file.filename
-    user.avator = 'http://localhost:3333/' + req.file.filename
+    if(req.file) user.avator = 'http://localhost:3333/' + req.file.filename
+    await user.save() 
     const userJson = user.toJSON()
-    await user.save()
+    delete userJson.createAt
     res.status(200).json({
-      user: userJson,
+      code: 200,
+      msg: 'ok',
+      data: user,
     })
   } catch (err) {
     next(err)
